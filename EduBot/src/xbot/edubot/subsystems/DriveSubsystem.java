@@ -3,9 +3,9 @@ package xbot.edubot.subsystems;
 import xbot.common.controls.*;
 import xbot.common.controls.actuators.XSpeedController;
 import xbot.common.controls.sensors.DistanceSensor;
-import xbot.common.controls.sensors.MockGyro;
-import xbot.common.controls.sensors.XGyro;
+
 import xbot.edubot.RobotMap;
+import xbot.edubot.rotationTests.MockHeadingSensor;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -18,7 +18,7 @@ public class DriveSubsystem {
 
 	public MockDistanceSensor distanceSensor = new MockDistanceSensor();
 	
-	public XGyro gyro = new MockGyro();
+	public MockHeadingSensor gyro = new MockHeadingSensor();
 	
 	XSpeedController frontLeft;
 	XSpeedController frontRight;

@@ -2,6 +2,7 @@ package xbot.edubot.rotationTests;
 
 import static org.junit.Assert.*;
 
+import xbot.common.command.BaseCommand;
 import xbot.edubot.BaseDriveTest;
 import xbot.edubot.commands.TurnLeft90DegreesCommand;
 import xbot.edubot.engines.RotationEngine;

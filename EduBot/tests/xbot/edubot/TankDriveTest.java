@@ -2,7 +2,7 @@ package xbot.edubot;
 
 import org.junit.Test;
 
-import xbot.common.wpi_extensions.BaseCommand;
+import xbot.common.command.BaseCommand;
 import xbot.edubot.commands.TankDriveWithJoysticksCommand;
 
 public class TankDriveTest extends BaseDriveTest {

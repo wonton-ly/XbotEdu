@@ -2,6 +2,7 @@ package xbot.edubot.commands;
 
 import com.google.inject.Inject;
 
+import xbot.common.command.BaseCommand;
 import xbot.edubot.OI;
 import xbot.edubot.subsystems.DriveSubsystem;
 
