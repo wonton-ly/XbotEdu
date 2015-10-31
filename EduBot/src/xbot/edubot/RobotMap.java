@@ -5,9 +5,9 @@ import org.apache.log4j.Logger;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import xbot.common.controls.actuators.XSpeedController;
+import xbot.common.controls.sensors.XDigitalInput;
 import xbot.common.injection.wpi_factories.WPIFactory;
-import xbot.common.wpi_extensions.mechanism_wrappers.XDigitalInput;
-import xbot.common.wpi_extensions.mechanism_wrappers.XSpeedController;
 import edu.wpi.first.wpilibj.SpeedController;
 
 /**

@@ -2,10 +2,10 @@ package xbot.edubot.commands;
 
 import com.google.inject.Inject;
 
-import xbot.common.wpi_extensions.BaseCommand;
+import xbot.common.command.BaseCommand;
 import xbot.edubot.subsystems.DriveSubsystem;
 
-public class TurnLeft90DegreesCommand extends BaseCommand{
+public class TurnLeft90DegreesCommand extends BaseCommand {
 	
 	DriveSubsystem drive;
 	

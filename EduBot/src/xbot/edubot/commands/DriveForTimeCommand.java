@@ -1,6 +1,6 @@
 package xbot.edubot.commands;
 
-import xbot.common.wpi_extensions.BaseCommand;
+import xbot.common.command.BaseCommand;
 
 public class DriveForTimeCommand extends BaseCommand {
 

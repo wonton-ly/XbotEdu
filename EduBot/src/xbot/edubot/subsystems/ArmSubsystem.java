@@ -1,8 +1,7 @@
 package xbot.edubot.subsystems;
 
-
-import xbot.common.wpi_extensions.mechanism_wrappers.XDigitalInput;
-import xbot.common.wpi_extensions.mechanism_wrappers.XSpeedController;
+import xbot.common.controls.actuators.XSpeedController;
+import xbot.common.controls.sensors.XDigitalInput;
 import xbot.edubot.RobotMap;
 
 import com.google.inject.Inject;

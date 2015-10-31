@@ -2,7 +2,7 @@ package xbot.edubot.commands;
 
 import com.google.inject.Inject;
 
-import xbot.common.wpi_extensions.BaseCommand;
+import xbot.common.command.BaseCommand;
 import xbot.edubot.subsystems.DriveSubsystem;
 
 public class ArcadeDriveWithJoysticksCommand extends BaseCommand {

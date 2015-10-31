@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import xbot.common.wpi_extensions.BaseCommand;
+import xbot.common.command.BaseCommand;
 import xbot.edubot.commands.DriveForTimeCommand;
 import edu.wpi.first.wpilibj.MockTimer;
 

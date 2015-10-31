@@ -1,20 +1,24 @@
 package xbot.edubot.subsystems;
 
 import xbot.common.controls.*;
-import xbot.common.wpi_extensions.mechanism_wrappers.XSpeedController;
+import xbot.common.controls.actuators.XSpeedController;
+import xbot.common.controls.sensors.DistanceSensor;
+import xbot.common.controls.sensors.MockGyro;
+import xbot.common.controls.sensors.XGyro;
 import xbot.edubot.RobotMap;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import edu.wpi.first.wpilibj.MockDistanceSensor;
 import edu.wpi.first.wpilibj.SpeedController;
 
 @Singleton
 public class DriveSubsystem {
 
-	public DistanceSensor distanceSensor = new MockDistanceSensor();
+	public MockDistanceSensor distanceSensor = new MockDistanceSensor();
 	
-	public HeadingSensor gyro = new HeadingSensor();
+	public XGyro gyro = new MockGyro();
 	
 	XSpeedController frontLeft;
 	XSpeedController frontRight;
