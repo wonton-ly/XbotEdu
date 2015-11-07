@@ -36,6 +36,12 @@ public class TogglePrecisionDriveCommandTest extends BaseDriveTest {
 		driveCommand.execute();
 		this.assertDrive(-0.5, -0.5);
 		
+		left.setY(1.0);
+		right.setY(1.0);
+		driveCommand.execute();
+		driveCommand.execute();
+		this.assertDrive(0.5, 0.5);
+		
 		togglePrecisionCommand.initialize();
 		togglePrecisionCommand.execute();
 		
