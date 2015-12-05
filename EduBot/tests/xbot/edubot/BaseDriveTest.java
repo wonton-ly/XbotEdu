@@ -6,7 +6,8 @@ import org.junit.Before;
 
 import edu.wpi.first.wpilibj.MockJoystick;
 import xbot.common.injection.BaseWPITest;
-import xbot.edubot.subsystems.DriveSubsystem;
+import xbot.edubot.operatorinterface.OI;
+import xbot.edubot.subsystems.drive.DriveSubsystem;
 
 public class BaseDriveTest extends BaseWPITest {
 

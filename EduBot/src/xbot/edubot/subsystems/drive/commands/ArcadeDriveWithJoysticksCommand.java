@@ -1,14 +1,14 @@
-package xbot.edubot.commands;
+package xbot.edubot.subsystems.drive.commands;
 
 import com.google.inject.Inject;
 
 import xbot.common.command.BaseCommand;
-import xbot.edubot.subsystems.DriveSubsystem;
+import xbot.edubot.subsystems.drive.DriveSubsystem;
 
-public class TogglePrecisionDriveCommand extends BaseCommand {
+public class ArcadeDriveWithJoysticksCommand extends BaseCommand {
 
 	@Inject
-	public TogglePrecisionDriveCommand(DriveSubsystem driveSubsystem) {
+	public ArcadeDriveWithJoysticksCommand(DriveSubsystem driveSubsystem) {
 		// TODO Auto-generated constructor stub
 	}
 	

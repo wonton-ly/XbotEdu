@@ -1,10 +1,10 @@
-package xbot.edubot.commands;
+package xbot.edubot.subsystems.drive.commands;
 
 import com.google.inject.Inject;
 
 import xbot.common.command.BaseCommand;
-import xbot.edubot.OI;
-import xbot.edubot.subsystems.DriveSubsystem;
+import xbot.edubot.operatorinterface.OI;
+import xbot.edubot.subsystems.drive.DriveSubsystem;
 
 public class TankDriveWithJoysticksCommand extends BaseCommand {
 

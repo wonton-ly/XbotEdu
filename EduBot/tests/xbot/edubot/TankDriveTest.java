@@ -3,7 +3,7 @@ package xbot.edubot;
 import org.junit.Test;
 
 import xbot.common.command.BaseCommand;
-import xbot.edubot.commands.TankDriveWithJoysticksCommand;
+import xbot.edubot.subsystems.drive.commands.TankDriveWithJoysticksCommand;
 
 public class TankDriveTest extends BaseDriveTest {
 

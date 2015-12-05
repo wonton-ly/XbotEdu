@@ -5,7 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import xbot.common.command.BaseCommand;
-import xbot.edubot.commands.ArcadeDriveWithJoysticksCommand;
+import xbot.edubot.operatorinterface.OI;
+import xbot.edubot.subsystems.drive.commands.ArcadeDriveWithJoysticksCommand;
 import edu.wpi.first.wpilibj.MockJoystick;
 
 public class ArcadeDriveTest extends BaseDriveTest {

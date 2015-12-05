@@ -1,10 +1,9 @@
-package xbot.edubot.subsystems;
+package xbot.edubot.subsystems.drive;
 
 import xbot.common.controls.*;
 import xbot.common.controls.actuators.XSpeedController;
 import xbot.common.controls.sensors.DistanceSensor;
-
-import xbot.edubot.RobotMap;
+import xbot.common.injection.wpi_factories.WPIFactory;
 import xbot.edubot.rotationTests.MockHeadingSensor;
 
 import com.google.inject.Inject;
@@ -26,11 +25,12 @@ public class DriveSubsystem {
 	XSpeedController rearRight;
 		
 	@Inject
-	public DriveSubsystem(RobotMap robotMap) {
-		frontLeft = robotMap.frontLeft;
-		frontRight = robotMap.frontRight;
-		rearLeft = robotMap.rearLeft;
-		rearRight = robotMap.rearRight;
+	public DriveSubsystem(WPIFactory factory) {
+		// instantiate speed controllers and sensors here, save them as class members
+		frontLeft = factory.getSpeedController(1);
+		rearLeft = factory.getSpeedController(3);
+		frontRight = factory.getSpeedController(2);
+		rearRight = factory.getSpeedController(4);
 	}
 	
 	// Add methods below that commands will call into to manipulate the drive motors

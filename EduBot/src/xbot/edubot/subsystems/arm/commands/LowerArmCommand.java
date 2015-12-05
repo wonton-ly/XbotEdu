@@ -1,4 +1,4 @@
-package xbot.edubot.commands;
+package xbot.edubot.subsystems.arm.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
