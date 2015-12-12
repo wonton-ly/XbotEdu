@@ -1,4 +1,4 @@
-package xbot.edubot.operatorinterface;
+package xbot.edubot.operator_interface;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -11,7 +11,7 @@ import xbot.common.injection.wpi_factories.WPIFactory;
  * interface to the commands and command groups that allow control of the robot.
  */
 @Singleton
-public class OI {
+public class OperatorInterface {
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -43,7 +43,7 @@ public class OI {
 	public XJoystick rightJoystick;
 	
 	@Inject
-	public OI(WPIFactory factory) {
+	public OperatorInterface(WPIFactory factory) {
 		leftJoystick = factory.getJoystick(1);		
 		rightJoystick = factory.getJoystick(2);
 

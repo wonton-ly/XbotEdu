@@ -3,7 +3,7 @@ package xbot.edubot;
 import org.junit.Test;
 
 import xbot.common.command.BaseCommand;
-import xbot.edubot.operatorinterface.OI;
+import xbot.edubot.operator_interface.OperatorInterface;
 import xbot.edubot.subsystems.drive.DriveSubsystem;
 import xbot.edubot.subsystems.drive.commands.TankDriveWithJoysticksCommand;
 import xbot.edubot.subsystems.drive.commands.TogglePrecisionDriveCommand;
@@ -14,7 +14,7 @@ public class TogglePrecisionDriveCommandTest extends BaseDriveTest {
 	@Test
 	public void test() {
 		DriveSubsystem drive = this.injector.getInstance(DriveSubsystem.class);
-		OI oi = this.injector.getInstance(OI.class);
+		OperatorInterface oi = this.injector.getInstance(OperatorInterface.class);
 		
 		BaseCommand driveCommand = new TankDriveWithJoysticksCommand(drive, oi);
 		BaseCommand togglePrecisionCommand = new TogglePrecisionDriveCommand(drive);
