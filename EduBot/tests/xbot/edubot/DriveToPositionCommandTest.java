@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import xbot.edubot.commands.DriveToPositionCommand;
+import xbot.edubot.subsystems.drive.commands.DriveToPositionCommand;
 
 public class DriveToPositionCommandTest extends BaseDriveTest {
 

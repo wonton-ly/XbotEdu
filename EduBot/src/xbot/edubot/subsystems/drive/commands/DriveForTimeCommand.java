@@ -1,4 +1,4 @@
-package xbot.edubot.commands;
+package xbot.edubot.subsystems.drive.commands;
 
 import xbot.common.command.BaseCommand;
 

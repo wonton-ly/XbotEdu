@@ -7,11 +7,12 @@ import org.junit.Before;
 import edu.wpi.first.wpilibj.MockDigitalInput;
 import edu.wpi.first.wpilibj.MockJoystick;
 import xbot.common.injection.BaseWPITest;
-import xbot.edubot.subsystems.ArmSubsystem;
+import xbot.edubot.operator_interface.OperatorInterface;
+import xbot.edubot.subsystems.arm.ArmSubsystem;
 
 public class BaseArmTest extends BaseWPITest {
 	
-	OI oi;
+	OperatorInterface oi;
 	ArmSubsystem arms; 
 	
 	MockJoystick left = new MockJoystick();
@@ -24,7 +25,7 @@ public class BaseArmTest extends BaseWPITest {
 	@Before
 	public void setUp (){
 		super.setUp();
-		oi = this.injector.getInstance(OI.class);
+		oi = this.injector.getInstance(OperatorInterface.class);
 		arms = this.injector.getInstance(ArmSubsystem.class);
 		
 		left = (MockJoystick)oi.leftJoystick;

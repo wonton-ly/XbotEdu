@@ -1,8 +1,8 @@
-package xbot.edubot.subsystems;
+package xbot.edubot.subsystems.arm;
 
 import xbot.common.controls.actuators.XSpeedController;
 import xbot.common.controls.sensors.XDigitalInput;
-import xbot.edubot.RobotMap;
+import xbot.common.injection.wpi_factories.WPIFactory;
 
 import com.google.inject.Inject;
 
@@ -14,11 +14,11 @@ public class ArmSubsystem {
 	public XDigitalInput upperLimitSwitch, lowerLimitSwitch;
 	
 	@Inject
-	public ArmSubsystem(RobotMap robotMap) {
-		upperLimitSwitch = robotMap.upperLimitSwitch;
-		lowerLimitSwitch = robotMap.lowerLimitSwitch;
+	public ArmSubsystem(WPIFactory factory) {
+		armMotor = factory.getSpeedController(5);
 		
-		armMotor = robotMap.arm;
+		upperLimitSwitch = factory.getDigitalInput(0);
+		lowerLimitSwitch = factory.getDigitalInput(1);
 	}
 
 }

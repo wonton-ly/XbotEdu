@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import xbot.common.command.BaseCommand;
 import xbot.edubot.BaseDriveTest;
-import xbot.edubot.commands.TurnLeft90DegreesCommand;
 import xbot.edubot.engines.RotationEngine;
+import xbot.edubot.subsystems.drive.commands.TurnLeft90DegreesCommand;
 
 
 public class BaseOrientationEngineTest extends BaseDriveTest {

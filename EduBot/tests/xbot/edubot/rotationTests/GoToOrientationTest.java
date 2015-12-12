@@ -2,8 +2,8 @@ package xbot.edubot.rotationTests;
 
 import org.junit.Test;
 
-import xbot.edubot.commands.DriveToOrientationCommand;
 import xbot.edubot.engines.RotationEngine;
+import xbot.edubot.subsystems.drive.commands.DriveToOrientationCommand;
 
 public class GoToOrientationTest extends BaseOrientationEngineTest {
 	

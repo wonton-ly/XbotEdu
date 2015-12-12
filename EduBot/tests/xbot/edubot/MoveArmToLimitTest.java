@@ -2,7 +2,7 @@ package xbot.edubot;
 
 import org.junit.Test;
 
-import xbot.edubot.commands.RaiseArmCommand;
+import xbot.edubot.subsystems.arm.commands.RaiseArmCommand;
 
 public class MoveArmToLimitTest extends BaseArmTest {
 	

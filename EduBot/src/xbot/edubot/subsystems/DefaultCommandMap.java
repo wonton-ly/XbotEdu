@@ -1,7 +1,7 @@
-package xbot.edubot;
+package xbot.edubot.subsystems;
 
-import xbot.edubot.commands.TankDriveWithJoysticksCommand;
-import xbot.edubot.subsystems.DriveSubsystem;
+import xbot.edubot.subsystems.drive.DriveSubsystem;
+import xbot.edubot.subsystems.drive.commands.TankDriveWithJoysticksCommand;
 
 import com.google.inject.Inject;
 

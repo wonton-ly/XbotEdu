@@ -5,14 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import xbot.common.command.BaseCommand;
-import xbot.edubot.commands.ArcadeDriveWithJoysticksCommand;
+import xbot.edubot.operator_interface.OperatorInterface;
+import xbot.edubot.subsystems.drive.commands.ArcadeDriveWithJoysticksCommand;
 import edu.wpi.first.wpilibj.MockJoystick;
 
 public class ArcadeDriveTest extends BaseDriveTest {
 
 	@Test
 	public void test() {
-		OI oi = this.injector.getInstance(OI.class);
+		OperatorInterface oi = this.injector.getInstance(OperatorInterface.class);
 		
 		BaseCommand command = injector.getInstance(ArcadeDriveWithJoysticksCommand.class);
 			

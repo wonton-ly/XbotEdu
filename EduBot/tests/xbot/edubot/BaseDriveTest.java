@@ -6,12 +6,13 @@ import org.junit.Before;
 
 import edu.wpi.first.wpilibj.MockJoystick;
 import xbot.common.injection.BaseWPITest;
-import xbot.edubot.subsystems.DriveSubsystem;
+import xbot.edubot.operator_interface.OperatorInterface;
+import xbot.edubot.subsystems.drive.DriveSubsystem;
 
 public class BaseDriveTest extends BaseWPITest {
 
 	protected DriveSubsystem drive;
-	OI oi;
+	OperatorInterface oi;
 	
 	MockJoystick left;
 	MockJoystick right;
@@ -20,7 +21,7 @@ public class BaseDriveTest extends BaseWPITest {
 	public void setUp() {
 		super.setUp();
 		drive = this.injector.getInstance(DriveSubsystem.class);
-		oi = this.injector.getInstance(OI.class);
+		oi = this.injector.getInstance(OperatorInterface.class);
 
 		left = (MockJoystick)oi.leftJoystick;
 		right = (MockJoystick)oi.rightJoystick;

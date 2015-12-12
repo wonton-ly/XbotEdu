@@ -1,9 +1,9 @@
-package xbot.edubot.commands;
+package xbot.edubot.subsystems.drive.commands;
 
 import com.google.inject.Inject;
 
 import xbot.common.command.BaseCommand;
-import xbot.edubot.subsystems.DriveSubsystem;
+import xbot.edubot.subsystems.drive.DriveSubsystem;
 
 public class TurnLeft90DegreesCommand extends BaseCommand {
 	
