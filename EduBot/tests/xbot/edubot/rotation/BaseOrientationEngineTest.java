@@ -1,4 +1,4 @@
-package xbot.edubot.rotationTests;
+package xbot.edubot.rotation;
 
 import static org.junit.Assert.*;
 

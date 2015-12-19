@@ -1,4 +1,4 @@
-package xbot.edubot.rotationTests;
+package xbot.edubot.rotation;
 
 public class MockHeadingSensor {
 	private double yaw = 0;

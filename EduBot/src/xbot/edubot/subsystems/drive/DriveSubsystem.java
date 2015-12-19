@@ -4,7 +4,7 @@ import xbot.common.controls.*;
 import xbot.common.controls.actuators.XSpeedController;
 import xbot.common.controls.sensors.DistanceSensor;
 import xbot.common.injection.wpi_factories.WPIFactory;
-import xbot.edubot.rotationTests.MockHeadingSensor;
+import xbot.edubot.rotation.MockHeadingSensor;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
