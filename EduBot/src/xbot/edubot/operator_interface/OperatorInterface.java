@@ -3,6 +3,7 @@ package xbot.edubot.operator_interface;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import xbot.common.controls.sensors.JoystickButtonManager;
 import xbot.common.controls.sensors.XJoystick;
 import xbot.common.injection.wpi_factories.WPIFactory;
 
@@ -42,6 +43,8 @@ public class OperatorInterface {
 	public XJoystick leftJoystick;
 	public XJoystick rightJoystick;
 	
+	public JoystickButtonManager driverJoystickButtons;
+	
 	@Inject
 	public OperatorInterface(WPIFactory factory) {
 		leftJoystick = factory.getJoystick(1);		
@@ -49,6 +52,8 @@ public class OperatorInterface {
 
         leftJoystick.setYInversion(true);
 		rightJoystick.setXInversion(true);
+		
+		driverJoystickButtons = new JoystickButtonManager(8, factory, leftJoystick);
 	}
 }
 
