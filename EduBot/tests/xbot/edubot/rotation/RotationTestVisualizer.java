@@ -47,7 +47,7 @@ public class RotationTestVisualizer {
     public RotationTestVisualizer() {
         initialize();
     }
-    boolean x = true;
+    
     /**
      * Initialize the contents of the frame.
      */
@@ -106,15 +106,6 @@ public class RotationTestVisualizer {
         currentTestEnvironment.setUp();
         
         currentTestEnvironment.setAsAsync((BaseOrientationEngineTest.RotationEnvironmentState envState) -> {
-            if(x) {
-                x = false;
-                try {
-                    Thread.sleep(20000);
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
             this.envState = envState;
             vizPanel.repaint();
         });
