@@ -85,6 +85,10 @@ public class BaseOrientationEngineTest extends BaseDriveTest {
             }
         }, 0, (int) (TIME_STEP * 1000));
     }
+    
+    public void stopTestEnv() {
+        asyncTimer.cancel();
+    }
 
     protected void runRotationStep(RotationEngine engine) {
         engine.setPower(getRotationPower());

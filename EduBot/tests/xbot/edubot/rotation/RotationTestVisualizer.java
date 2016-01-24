@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
+import java.awt.event.ItemEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,12 +20,23 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.BoxLayout;
+import javax.swing.JSplitPane;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import xbot.edubot.rotation.RotationTestVisualizer.OrientationTest;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
+import java.awt.FlowLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class RotationTestVisualizer {
-    private JFrame frame;
+    private JFrame frmOrientationTestVisualizer;
     private RotationVisualizationPanel vizPanel;
     BaseOrientationEngineTest currentTestEnvironment;
     RotationEnvironmentState envState = new RotationEnvironmentState();
+    private JPanel controlPanel;
+    private JComboBox testSelectionBox;
 
     /**
      * Launch the application.
@@ -34,7 +46,7 @@ public class RotationTestVisualizer {
             public void run() {
                 try {
                     RotationTestVisualizer window = new RotationTestVisualizer();
-                    window.frame.setVisible(true);
+                    window.frmOrientationTestVisualizer.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -53,21 +65,43 @@ public class RotationTestVisualizer {
      * Initialize the contents of the frame.
      */
     private void initialize() {
-        frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-
-        vizPanel = new RotationVisualizationPanel();
+        frmOrientationTestVisualizer = new JFrame();
+        frmOrientationTestVisualizer.setTitle("Orientation test visualizer");
+        frmOrientationTestVisualizer.setBounds(100, 100, 600, 400);
+        frmOrientationTestVisualizer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frmOrientationTestVisualizer.getContentPane().setLayout(new BoxLayout(frmOrientationTestVisualizer.getContentPane(), BoxLayout.Y_AXIS));
+        
+        JSplitPane splitPane = new JSplitPane();
+        frmOrientationTestVisualizer.getContentPane().add(splitPane);
+        
+        vizPanel = new RotationVisualizationPanel(400, 300);
+        splitPane.setLeftComponent(vizPanel);
+        
+        controlPanel = new JPanel();
+        splitPane.setRightComponent(controlPanel);
+        
+        testSelectionBox = new JComboBox();
+        testSelectionBox.addItemListener((e) -> {
+            if(e.getStateChange() == ItemEvent.SELECTED) {
+                setOrientationTest((OrientationTest)e.getItem());
+            }
+        });
+        
+        controlPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        testSelectionBox.setModel(new DefaultComboBoxModel(OrientationTest.values()));
+        testSelectionBox.setSelectedIndex(0);
+        controlPanel.add(testSelectionBox);
+        
         vizPanel.updateState(envState);
         
-        frame.getContentPane().add(vizPanel);
-        
-
-        setRotationTest(OrientationTest.ROTATE_TO_ORIENTATION);
+        setOrientationTest((OrientationTest)testSelectionBox.getSelectedItem());
     }
     
-    private void setRotationTest(OrientationTest test) {
+    private void setOrientationTest(OrientationTest test) {
+        if(currentTestEnvironment != null) {
+            currentTestEnvironment.stopTestEnv();
+        }
+        
         switch(test) {
             case GO_LEFT_90_FROM_0:
             case GO_LEFT_90_FROM_150:

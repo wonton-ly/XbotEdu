@@ -2,6 +2,7 @@ package xbot.edubot.rotation;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
@@ -15,13 +16,25 @@ public class RotationVisualizationPanel extends JPanel {
     private int centerY;
     private XYPair center;
     private double baseMagnitude;
-    
+
+    private int preferredWidth = 200;
+    private int minimumWidth = 200;
+
+    public RotationVisualizationPanel() {
+
+    }
+
+    public RotationVisualizationPanel(int preferredWidth, int minimumWidth) {
+        this.preferredWidth = preferredWidth;
+        this.minimumWidth = minimumWidth;
+    }
+
     RotationEnvironmentState envState = new RotationEnvironmentState();
-    
+
     public void updateState(RotationEnvironmentState envState) {
         this.envState = envState;
     }
-    
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -43,10 +56,11 @@ public class RotationVisualizationPanel extends JPanel {
         graphics.setColor(Color.CYAN);
         drawVector(graphics, XYPair.fromPolar(envState.currentOrientation + 90,
                 envState.currentRotationalPower * 0.5 * baseMagnitude), currentOrientationVector);
-        
+
         graphics.setColor(Color.GRAY);
-        drawVector(graphics, XYPair.fromPolar(envState.currentOrientation + 90,
-                envState.currentVelocity / 30 * baseMagnitude), currentOrientationVector.scale(0.5));
+        drawVector(graphics,
+                XYPair.fromPolar(envState.currentOrientation + 90, envState.currentVelocity / 30 * baseMagnitude),
+                currentOrientationVector.scale(0.5));
     }
 
     protected void drawVector(Graphics2D graphics, XYPair vector) {
@@ -56,6 +70,17 @@ public class RotationVisualizationPanel extends JPanel {
     protected void drawVector(Graphics2D graphics, XYPair vector, XYPair originPosition) {
         XYPair centeredOrigin = originPosition.clone().add(center);
         XYPair positionedVector = vector.clone().add(centeredOrigin);
-        graphics.drawLine((int)centeredOrigin.x, (int)centeredOrigin.y, (int) positionedVector.x, (int) positionedVector.y);
+        graphics.drawLine((int) centeredOrigin.x, (int) centeredOrigin.y, (int) positionedVector.x,
+                (int) positionedVector.y);
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(preferredWidth, 0);
+    }
+
+    @Override
+    public Dimension getMinimumSize() {
+        return new Dimension(minimumWidth, 0);
     }
 }
