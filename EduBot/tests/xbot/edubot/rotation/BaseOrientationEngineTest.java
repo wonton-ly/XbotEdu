@@ -6,16 +6,17 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import xbot.common.command.BaseCommand;
+import xbot.common.math.MathUtils;
 import xbot.edubot.BaseDriveTest;
 import xbot.edubot.engines.RotationEngine;
 import xbot.edubot.subsystems.drive.commands.TurnLeft90DegreesCommand;
 
 public class BaseOrientationEngineTest extends BaseDriveTest {
 
-    protected static final double POSITION_ERROR_THRESHOLD = 3;
-    protected static final double VELOCITY_ERROR_THRESHOLD = 0.1;
-    protected static final int MAX_ROTATION_CYCLES = 501;
-    protected static final double TIME_STEP = 0.1;
+    public static final double POSITION_ERROR_THRESHOLD = 3;
+    public static final double VELOCITY_ERROR_THRESHOLD = 0.1;
+    public static final int MAX_ROTATION_CYCLES = 501;
+    public static final double BASE_TIME_STEP = 0.1;
 
     protected double targetYaw;
     protected BaseCommand currentRotationCommand;
@@ -24,6 +25,7 @@ public class BaseOrientationEngineTest extends BaseDriveTest {
     protected Timer asyncTimer;
     protected AsyncRotationIntervalJob asyncIntervalJob;
     protected boolean isAsync = false;
+    protected double periodMultiplier = 1;
 
     public void setAsAsync(AsyncRotationIntervalJob asyncIntervalJob) {
         this.asyncIntervalJob = asyncIntervalJob;
@@ -31,7 +33,7 @@ public class BaseOrientationEngineTest extends BaseDriveTest {
     }
 
     protected void setUpTestEnvironment(BaseCommand command, double initialYaw, double targetYaw) {
-        engine = new RotationEngine(TIME_STEP, initialYaw, 0);
+        engine = new RotationEngine(BASE_TIME_STEP, initialYaw, 0);
         drive.gyro.setYaw(initialYaw);
         this.targetYaw = targetYaw;
         this.currentRotationCommand = command;
@@ -57,7 +59,7 @@ public class BaseOrientationEngineTest extends BaseDriveTest {
         for (int i = 0; i < MAX_ROTATION_CYCLES; i++) {
             runRotationStep(engine);
 
-            System.out.printf("Time:%.1f sec, TurningPower:%.2f, Velocity:%.2f, Yaw:%.2f \n", (double) i * TIME_STEP,
+            System.out.printf("Time:%.1f sec, TurningPower:%.2f, Velocity:%.2f, Yaw:%.2f \n", (double) i * BASE_TIME_STEP,
                     getRotationPower(), engine.getVelocity(), engine.getOrientation());
 
             if (currentRotationCommand.isFinished()) {
@@ -84,7 +86,16 @@ public class BaseOrientationEngineTest extends BaseDriveTest {
                 asyncIntervalJob.onNewStep(new RotationEnvironmentState(targetYaw, engine.getOrientation(),
                         engine.getVelocity(), getRotationPower(), currentRotationCommand.isFinished()));
             }
-        }, 0, (int) (TIME_STEP * 1000));
+        }, 0, (int) (BASE_TIME_STEP * 1000 * periodMultiplier));
+    }
+    
+    public void setAsyncPeriodMultiplier(double newMultiplier) {
+        if(Math.abs(this.periodMultiplier - newMultiplier) > 0.01) {
+            this.periodMultiplier = newMultiplier;
+            
+            asyncTimer.cancel();
+            startAsyncTimer();
+        }
     }
     
     public void stopTestEnv() {

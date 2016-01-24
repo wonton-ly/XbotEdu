@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import org.junit.Ignore;
 
+import xbot.common.command.BaseCommandTest;
 import xbot.common.math.XYPair;
 import xbot.edubot.rotation.BaseOrientationEngineTest.AsyncRotationIntervalJob;
 import xbot.edubot.rotation.BaseOrientationEngineTest.RotationEnvironmentState;
@@ -29,6 +30,7 @@ import java.beans.PropertyChangeEvent;
 import java.awt.FlowLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JSlider;
 
 public class RotationTestVisualizer {
     private JFrame frmOrientationTestVisualizer;
@@ -37,6 +39,7 @@ public class RotationTestVisualizer {
     RotationEnvironmentState envState = new RotationEnvironmentState();
     private JPanel controlPanel;
     private JComboBox testSelectionBox;
+    private JSlider speedSlider;
 
     /**
      * Launch the application.
@@ -92,6 +95,11 @@ public class RotationTestVisualizer {
         testSelectionBox.setSelectedIndex(0);
         controlPanel.add(testSelectionBox);
         
+        speedSlider = new JSlider();
+        speedSlider.setMinimum(1);
+        speedSlider.setValue(10);
+        controlPanel.add(speedSlider);
+        
         vizPanel.updateState(envState);
         
         setOrientationTest((OrientationTest)testSelectionBox.getSelectedItem());
@@ -120,6 +128,13 @@ public class RotationTestVisualizer {
             this.envState = envState;
             vizPanel.updateState(envState);
             vizPanel.repaint();
+            
+            if(envState.isCommandFinished) {
+                currentTestEnvironment.stopTestEnv();
+            }
+            
+            // The slider makes the engine do more physics
+            currentTestEnvironment.setAsyncPeriodMultiplier(10d / speedSlider.getValue());
         });
         
         ((SelectableOrientationTest) currentTestEnvironment).invokeOrientationTest(test);
