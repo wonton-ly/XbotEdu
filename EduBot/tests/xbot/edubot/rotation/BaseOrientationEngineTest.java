@@ -13,6 +13,7 @@ import xbot.edubot.subsystems.drive.commands.TurnLeft90DegreesCommand;
 public class BaseOrientationEngineTest extends BaseDriveTest {
 
     protected static final double POSITION_ERROR_THRESHOLD = 3;
+    protected static final double VELOCITY_ERROR_THRESHOLD = 0.1;
     protected static final int MAX_ROTATION_CYCLES = 501;
     protected static final double TIME_STEP = 0.1;
 
@@ -100,7 +101,7 @@ public class BaseOrientationEngineTest extends BaseDriveTest {
         assertEquals("Make sure robot is close to target position within " + POSITION_ERROR_THRESHOLD, targetHeading,
                 drive.gyro.getYaw(), POSITION_ERROR_THRESHOLD);
         assertEquals("Make sure robot has come to a stop, not just flying past the target position.", 0.0,
-                engine.getVelocity(), 0.1);
+                engine.getVelocity(), VELOCITY_ERROR_THRESHOLD);
     }
 
     private double getRotationPower() {
@@ -122,11 +123,16 @@ public class BaseOrientationEngineTest extends BaseDriveTest {
     }
 
     public static class RotationEnvironmentState {
-        public double targetOrientation;
-        public double currentOrientation;
-        public double currentVelocity;
-        public double currentRotationalPower;
-        public boolean isCommandFinished;
+        public final double targetOrientation;
+        public final double currentOrientation;
+        public final double orientationThreshold;
+        public final double currentVelocity;
+        public final double velocityThreshold;
+        public final double currentRotationalPower;
+        public final boolean isCommandFinished;
+        
+        public final boolean isAtOrientationTarget;
+        public final boolean isAtVelocityTarget;
 
         public RotationEnvironmentState(double target, double yaw, double velocity, double rotationalPower,
                 boolean isFinished) {
@@ -135,6 +141,12 @@ public class BaseOrientationEngineTest extends BaseDriveTest {
             this.currentVelocity = velocity;
             this.currentRotationalPower = rotationalPower;
             this.isCommandFinished = isFinished;
+            
+            this.orientationThreshold = POSITION_ERROR_THRESHOLD;
+            this.velocityThreshold = VELOCITY_ERROR_THRESHOLD;
+            
+            this.isAtOrientationTarget = Math.abs(currentOrientation - targetOrientation) <= orientationThreshold;
+            this.isAtVelocityTarget = Math.abs(currentVelocity) <= velocityThreshold;
         }
         
         public RotationEnvironmentState() {

@@ -46,10 +46,10 @@ public class RotationVisualizationPanel extends JPanel {
         baseMagnitude = Math.min(centerX, centerY) * 0.8;
 
         graphics.setStroke(new BasicStroke(5));
-        graphics.setColor(Color.BLUE);
+        graphics.setColor(Color.MAGENTA);
         drawVector(graphics, XYPair.fromPolar(envState.targetOrientation, baseMagnitude));
 
-        graphics.setColor(Color.BLACK);
+        graphics.setColor(getColorForEnvState());
         XYPair currentOrientationVector = XYPair.fromPolar(envState.currentOrientation, baseMagnitude);
         drawVector(graphics, currentOrientationVector);
 
@@ -63,6 +63,30 @@ public class RotationVisualizationPanel extends JPanel {
                 currentOrientationVector.scale(0.5));
     }
 
+    private Color getColorForEnvState() {
+        if(envState.isAtOrientationTarget && envState.isAtVelocityTarget && envState.isCommandFinished) {
+            // At goal and command finished
+            return Color.GREEN;
+        }
+        else if (envState.isAtOrientationTarget && envState.isAtVelocityTarget && !envState.isCommandFinished) {
+            // At goal but command hasn't finished
+            return Color.BLUE;
+        }
+        else if ((!envState.isAtOrientationTarget || !envState.isAtVelocityTarget) && envState.isCommandFinished) {
+            // Not at goal but command reported completion
+            // TODO: Warn that this will cause everything to fail
+            return Color.RED;
+        }
+        else if (envState.isAtOrientationTarget || envState.isAtVelocityTarget) {
+            // Partially meeting goal
+            return Color.YELLOW;
+        }
+        else {
+            // Not meeting goal and not finished
+            return Color.BLACK;
+        }
+    }
+    
     protected void drawVector(Graphics2D graphics, XYPair vector) {
         drawVector(graphics, vector, XYPair.ZERO);
     }
