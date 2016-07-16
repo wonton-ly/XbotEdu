@@ -33,6 +33,10 @@ public class DriveSubsystem {
 		rearRight = factory.getSpeedController(4);
 	}
 	
-	// Add methods below that commands will call into to manipulate the drive motors
-	// Eg: public void tankDrive(double leftPower, double rightPower) {
+	public void tankDrive(double leftPower, double rightPower) {
+		// You'll need to take these power values and assign them to all of the motors. As
+		// an example, here is some code that has the frontLeft motor to spin according to
+		// the value of leftPower:
+		frontLeft.set(leftPower);
+	}
 }

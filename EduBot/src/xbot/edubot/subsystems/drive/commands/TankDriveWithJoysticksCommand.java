@@ -19,13 +19,16 @@ public class TankDriveWithJoysticksCommand extends BaseCommand {
 	
 	@Override
 	public void initialize() {
-		// TODO Auto-generated method stub
-		
+		// This code is run one time, right when the command is started.
+		// You don't need to write any code here for this exercise.
 	}
 
 	@Override
 	public void execute() {
-		// TODO Auto-generated method stub
+		// You need to get values from the joysticks and pass them into the motors. Here's how to get 
+		// how far the left joystick's Y-axis is pushed:
+		
+		double leftValue = operate.leftJoystick.getVector().y;
 		
 	}
 
