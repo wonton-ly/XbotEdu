@@ -15,9 +15,8 @@ import edu.wpi.first.wpilibj.SpeedController;
 @Singleton
 public class DriveSubsystem {
 
-	public MockDistanceSensor distanceSensor = new MockDistanceSensor();
-	
-	public MockHeadingSensor gyro = new MockHeadingSensor();
+	public MockDistanceSensor distanceSensor;
+	public MockHeadingSensor gyro;
 	
 	XSpeedController frontLeft;
 	XSpeedController frontRight;
@@ -27,6 +26,9 @@ public class DriveSubsystem {
 	@Inject
 	public DriveSubsystem(WPIFactory factory) {
 		// instantiate speed controllers and sensors here, save them as class members
+		distanceSensor = new MockDistanceSensor();
+		gyro = new MockHeadingSensor();
+		
 		frontLeft = factory.getSpeedController(1);
 		rearLeft = factory.getSpeedController(3);
 		frontRight = factory.getSpeedController(2);
