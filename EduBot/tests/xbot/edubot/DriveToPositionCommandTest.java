@@ -28,6 +28,7 @@ public class DriveToPositionCommandTest extends BaseDriveTest {
 		double error_threshold = 0.2;
 		
 		boolean isFinished = false;
+		double counter = 0;
 		
 		for(int i = 0; i < 300; i++) {
 			System.out.println("Loop: " + i + 
@@ -45,6 +46,7 @@ public class DriveToPositionCommandTest extends BaseDriveTest {
 				velocity += friction;
 				velocity = Math.min(0, velocity);
 			}
+			counter++;
 			
 			// model change in position based on motor power
 			drive.distanceSensor.incrementDistance(velocity);
@@ -57,6 +59,23 @@ public class DriveToPositionCommandTest extends BaseDriveTest {
 			command.execute();
 			
 		}
+		
+		System.out.println("=============");
+		System.out.println("To pass, the robot must be near the goal, ");
+		System.out.println("  with almost 0 velocity, and report that it is finished.");
+		System.out.println("  It also must finish within 300 loops.");
+		
+		double distance = drive.distanceSensor.getDistance();
+		boolean isNearGoal = (distance > target_distance - error_threshold) && (distance < target_distance + error_threshold); 
+		boolean isLowLoopCount = counter < 300;
+		boolean isSlow = (velocity > -0.1) && (velocity < 0.1);
+		
+		System.out.println("Your stats:");
+		System.out.println("Loop count: " + (int)counter + ", Pass=" + isLowLoopCount);
+		System.out.println("Your command's final distance: " + drive.distanceSensor.getDistance() + ", Pass=" + isNearGoal);
+		System.out.println("Your command's final velocity: " + velocity + ", Pass=" + isSlow);
+		System.out.println("Is your command finished: " + isFinished + ", Pass=" + isFinished);
+		
 		assertTrue("Verify command reports successfully finished", isFinished);
 		command.end();
 		assertEquals("Make sure robot is close to target position within " + error_threshold, 
