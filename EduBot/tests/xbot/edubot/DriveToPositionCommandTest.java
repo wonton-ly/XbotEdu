@@ -31,10 +31,7 @@ public class DriveToPositionCommandTest extends BaseDriveTest {
 		double counter = 0;
 		
 		for(int i = 0; i < 300; i++) {
-			System.out.println("Loop: " + i + 
-					"  Velocity: " + velocity + 
-					"  Distance: " + drive.distanceSensor.getDistance() + 
-					"  Power: " + getForwardPower());
+			
 			// apply motor power
 			velocity += getForwardPower() * power_factor;
 			
@@ -50,6 +47,11 @@ public class DriveToPositionCommandTest extends BaseDriveTest {
 			
 			// model change in position based on motor power
 			drive.distanceSensor.incrementDistance(velocity);
+			
+			System.out.println("Loop: " + i + 
+					"  Velocity: " + velocity + 
+					"  Distance: " + drive.distanceSensor.getDistance() + 
+					"  Power: " + getForwardPower());
 			
 			if(command.isFinished()) {
 				isFinished = true;
