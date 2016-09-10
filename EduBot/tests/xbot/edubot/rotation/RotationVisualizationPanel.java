@@ -47,19 +47,19 @@ public class RotationVisualizationPanel extends JPanel {
 
         graphics.setStroke(new BasicStroke(5));
         graphics.setColor(Color.MAGENTA);
-        drawVector(graphics, XYPair.fromPolar(envState.targetOrientation, baseMagnitude));
+        drawVector(graphics, XYPair.fromPolar(-envState.targetOrientation, baseMagnitude));
 
         graphics.setColor(getColorForEnvState());
-        XYPair currentOrientationVector = XYPair.fromPolar(envState.currentOrientation, baseMagnitude);
+        XYPair currentOrientationVector = XYPair.fromPolar(-envState.currentOrientation, baseMagnitude);
         drawVector(graphics, currentOrientationVector);
 
         graphics.setColor(Color.CYAN);
-        drawVector(graphics, XYPair.fromPolar(envState.currentOrientation + 90,
+        drawVector(graphics, XYPair.fromPolar(-envState.currentOrientation - 90,
                 envState.currentRotationalPower * 0.5 * baseMagnitude), currentOrientationVector);
 
         graphics.setColor(Color.GRAY);
         drawVector(graphics,
-                XYPair.fromPolar(envState.currentOrientation + 90, envState.currentVelocity / 30 * baseMagnitude),
+                XYPair.fromPolar(-envState.currentOrientation - 90, envState.currentVelocity / 30 * baseMagnitude),
                 currentOrientationVector.scale(0.5));
     }
 
