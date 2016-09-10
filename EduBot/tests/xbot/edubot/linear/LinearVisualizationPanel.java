@@ -16,6 +16,7 @@ public class LinearVisualizationPanel extends JPanel {
     private XYPair center;
     private double baseMagnitude;
     
+    private String loops = "0";
     private double robotCurrentDistance = 0;
 
     private int preferredWidth = 500;
@@ -36,6 +37,7 @@ public class LinearVisualizationPanel extends JPanel {
     
     public void updateViz(DriveToPositionCommandTest.LinearEnvironmentState envState) {
     	robotCurrentDistance = envState.distance;
+    	loops = Integer.toString(envState.loops);
     }
     
     @Override
@@ -43,7 +45,7 @@ public class LinearVisualizationPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D graphics = (Graphics2D) g;
 
-        centerX = this.getWidth() / 2;
+        centerX = this.getWidth() / 4;
         centerY = this.getHeight() / 2;
         center = new XYPair(centerX, centerY);
         baseMagnitude = Math.min(centerX, centerY) * 0.8;
@@ -51,9 +53,13 @@ public class LinearVisualizationPanel extends JPanel {
         int linearFactor = 30;
         
         // draw start
+        graphics.setColor(Color.GREEN);
+        graphics.setStroke(new BasicStroke(5));
         graphics.drawOval(centerX, centerY, 5, 5);
         
         // draw finish
+        graphics.setColor(Color.RED);
+        graphics.setStroke(new BasicStroke(5));
         graphics.drawOval(centerX+5*linearFactor, centerY, 5, 5);
         
         int robotLocation = (int) (robotCurrentDistance*linearFactor);
@@ -62,6 +68,11 @@ public class LinearVisualizationPanel extends JPanel {
         graphics.setColor(Color.BLUE);
         graphics.setStroke(new BasicStroke(5));
         graphics.drawOval(centerX+robotLocation, centerY, 5, 5);
+        
+        //draw loops
+        graphics.setColor(Color.BLACK);
+        graphics.setStroke(new BasicStroke(5));
+        graphics.drawString(loops, centerX, centerY+50);
     }
     
     @Override

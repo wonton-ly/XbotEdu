@@ -18,6 +18,7 @@ public class DriveToPositionCommandTest extends BaseDriveTest {
 	protected double periodMultiplier = 1;
 	LinearEngine engine;
 	DriveToPositionCommand command;
+	private int loops;
 	
     public static interface AsyncLinearIntervalJob {
         void onNewStep(LinearEnvironmentState envState);
@@ -31,10 +32,13 @@ public class DriveToPositionCommandTest extends BaseDriveTest {
     	public double velocity;
     	public double distance;
     	public boolean isFinished;
+    	public int loops;
     	
-    	public LinearEnvironmentState(double velocity, double distance, boolean isDone) {
+    	public LinearEnvironmentState(double velocity, double distance, boolean isDone, int loops) {
     		this.velocity = velocity;
     		this.distance = distance;
+    		this.isFinished = isDone;
+    		this.loops = loops;
     	}
     }
     
@@ -66,14 +70,15 @@ public class DriveToPositionCommandTest extends BaseDriveTest {
 	            public void run() {
 	                command.execute();
 	                engine.step(getForwardPower());
-	                
+	                loops++;
 	                drive.distanceSensor.setDistance(engine.getDistance());
 	                
 	                asyncJob.onNewStep(
                 		new LinearEnvironmentState(
                 				engine.getVelocity(), 
                 				engine.getDistance(), 
-        						command.isFinished())
+        						command.isFinished(),
+        						loops)
             		);
 	        	}
     		}, 0, (int)(1000*this.periodMultiplier));
