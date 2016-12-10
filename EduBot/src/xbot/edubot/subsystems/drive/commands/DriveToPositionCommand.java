@@ -27,7 +27,8 @@ public class DriveToPositionCommand extends BaseCommand {
 	@Override
 	public void execute() {
 		// Here you'll need to figure out a technique that:
-		// - Gets the robot to move to the target position
+		// - Gets the robot to move to the target position 
+		// - Hint: use drive.distanceSensor.get() to find out where you are
 		// - Gets the robot stop (or at least be moving really really slowly) at the target position
 		
 		// How you do this is up to you. If you get stuck, ask a mentor or student for some hints!
