@@ -20,7 +20,7 @@ public class RotationEngine {
 	{
 		this.timeStep = timeStep;
 		this.currentHeading = currentHeading;
-		this.currentHeading = currentVelocity;
+		this.currentVelocity = currentVelocity;
 	}
 	
 	// Steps the physics simulator forward a timestep
