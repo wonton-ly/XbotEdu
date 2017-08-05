@@ -11,7 +11,7 @@ public class ExampleSubsystem extends BaseSubsystem {
 		log.info("I am created!");
 	}
 	
-	public void WriteMessage(String message) {
+	public void writeMessage(String message) {
 		log.info(message);
 	}
 }

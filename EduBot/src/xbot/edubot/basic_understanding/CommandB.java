@@ -6,9 +6,12 @@ import xbot.common.command.BaseCommand;
 
 public class CommandB extends BaseCommand {
 
+	ExampleSubsystem exampleSubsystem;
+	
 	@Inject
 	public CommandB(ExampleSubsystem exampleSubsystem) {
 		requires(exampleSubsystem);
+		this.exampleSubsystem = exampleSubsystem;
 	}
 	@Override
 	public void initialize() {
@@ -17,7 +20,6 @@ public class CommandB extends BaseCommand {
 
 	@Override
 	public void execute() {
-		log.info("COMMAND B IS THE BEST!!!");
+		exampleSubsystem.writeMessage("COMMAND B IS THE BEST!!!");
 	}
-
 }
