@@ -7,7 +7,7 @@ import xbot.edubot.operator_interface.OperatorInterface;
 import xbot.edubot.subsystems.drive.DriveSubsystem;
 import xbot.edubot.subsystems.drive.commands.TankDriveWithJoysticksCommand;
 import xbot.edubot.subsystems.drive.commands.TogglePrecisionDriveCommand;
-import edu.wpi.first.wpilibj.MockJoystick;
+import xbot.common.controls.sensors.MockJoystick;
 
 public class TogglePrecisionDriveCommandTest extends BaseDriveTest {
 
