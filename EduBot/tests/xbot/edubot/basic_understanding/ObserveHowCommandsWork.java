@@ -8,7 +8,7 @@ import xbot.common.injection.BaseWPITest;
 public class ObserveHowCommandsWork extends BaseWPITest{
 
 	@Test
-	public void watch() {
+	public void watchExample() {
 		// This is a simple command that just prints out what methods are called on it.
 		ExampleCommand cmd = injector.getInstance(ExampleCommand.class);
 		
@@ -40,6 +40,30 @@ public class ObserveHowCommandsWork extends BaseWPITest{
 				System.out.println("Scheduler on loop" + i);
 			}
 			
+			scheduler.run();
+		}
+	}
+	
+	@Test
+	public void watchCommandsFight() {
+		CommandA cmda = injector.getInstance(CommandA.class);
+		CommandB cmdb = injector.getInstance(CommandB.class);
+		
+		// CommandA starts. 
+		cmda.start();
+		
+		XScheduler scheduler = injector.getInstance(XScheduler.class);
+		
+		for (int i = 0; i < 5; i++) {
+			scheduler.run();
+		}
+		
+		// Now we start CommandB. When you run this test, observe
+		// that CommandA is no longer running!
+		
+		cmdb.start();
+		
+		for (int i = 0; i < 5; i++) {
 			scheduler.run();
 		}
 	}
