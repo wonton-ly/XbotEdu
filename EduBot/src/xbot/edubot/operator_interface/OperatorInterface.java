@@ -6,6 +6,7 @@ import com.google.inject.Singleton;
 import xbot.common.controls.sensors.JoystickButtonManager;
 import xbot.common.controls.sensors.XJoystick;
 import xbot.common.injection.wpi_factories.WPIFactory;
+import xbot.common.logging.RobotAssertionManager;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -46,14 +47,14 @@ public class OperatorInterface {
 	public JoystickButtonManager driverJoystickButtons;
 	
 	@Inject
-	public OperatorInterface(WPIFactory factory) {
+	public OperatorInterface(WPIFactory factory, RobotAssertionManager assertionManager) {
 		leftJoystick = factory.getJoystick(1);		
 		rightJoystick = factory.getJoystick(2);
 
         leftJoystick.setYInversion(true);
 		rightJoystick.setXInversion(true);
 		
-		driverJoystickButtons = new JoystickButtonManager(8, factory, leftJoystick);
+		driverJoystickButtons = new JoystickButtonManager(8, factory, assertionManager, leftJoystick);
 	}
 }
 

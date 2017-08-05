@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import xbot.common.command.BaseCommand;
 import xbot.edubot.subsystems.drive.commands.TankDriveWithJoysticksCommand;
+import xbot.common.controls.sensors.MockJoystick;
 
 public class TankDriveTest extends BaseDriveTest {
 

@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 
 import edu.wpi.first.wpilibj.MockDigitalInput;
-import edu.wpi.first.wpilibj.MockJoystick;
+import xbot.common.controls.sensors.MockJoystick;
 import xbot.common.injection.BaseWPITest;
 import xbot.edubot.operator_interface.OperatorInterface;
 import xbot.edubot.subsystems.arm.ArmSubsystem;
@@ -15,8 +15,8 @@ public class BaseArmTest extends BaseWPITest {
 	OperatorInterface oi;
 	ArmSubsystem arms; 
 	
-	MockJoystick left = new MockJoystick();
-	MockJoystick right = new MockJoystick();
+	MockJoystick left;
+	MockJoystick right;
 	
 	MockDigitalInput upperLimitSwitch;
 	MockDigitalInput lowerLimitSwitch;
