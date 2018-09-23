@@ -2,7 +2,6 @@ package xbot.edubot.rotation;
 
 import org.junit.Test;
 
-import xbot.edubot.engines.RotationEngine;
 import xbot.edubot.rotation.RotationTestVisualizer.OrientationTest;
 import xbot.edubot.rotation.RotationTestVisualizer.SelectableOrientationTest;
 import xbot.edubot.subsystems.drive.commands.DriveToOrientationCommand;

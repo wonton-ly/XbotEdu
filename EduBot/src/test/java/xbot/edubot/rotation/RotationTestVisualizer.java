@@ -1,36 +1,18 @@
 package xbot.edubot.rotation;
 
 import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Stroke;
+import java.awt.FlowLayout;
 import java.awt.event.ItemEvent;
 
+import javax.swing.BoxLayout;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import org.junit.Ignore;
-
-import xbot.common.command.BaseCommandTest;
-import xbot.common.math.XYPair;
-import xbot.edubot.rotation.BaseOrientationEngineTest.AsyncRotationIntervalJob;
-import xbot.edubot.rotation.BaseOrientationEngineTest.RotationEnvironmentState;
-
-import java.awt.BasicStroke;
-import java.awt.BorderLayout;
-import java.awt.Color;
-
-import javax.swing.BoxLayout;
-import javax.swing.JSplitPane;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import xbot.edubot.rotation.RotationTestVisualizer.OrientationTest;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeEvent;
-import java.awt.FlowLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JSlider;
+import javax.swing.JSplitPane;
+
+import xbot.edubot.rotation.BaseOrientationEngineTest.RotationEnvironmentState;
 
 public class RotationTestVisualizer {
     private JFrame frmOrientationTestVisualizer;

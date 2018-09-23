@@ -1,12 +1,12 @@
 package xbot.edubot.rotation;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import xbot.common.command.BaseCommand;
-import xbot.common.math.MathUtils;
 import xbot.edubot.BaseDriveTest;
 import xbot.edubot.engines.RotationEngine;
 import xbot.edubot.subsystems.drive.commands.TurnLeft90DegreesCommand;

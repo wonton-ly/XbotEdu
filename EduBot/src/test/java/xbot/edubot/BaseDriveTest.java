@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 
-import xbot.common.controls.sensors.MockJoystick;
+import xbot.common.controls.sensors.mock_adapters.MockJoystick;
 import xbot.common.injection.BaseWPITest;
 import xbot.edubot.operator_interface.OperatorInterface;
 import xbot.edubot.subsystems.drive.DriveSubsystem;

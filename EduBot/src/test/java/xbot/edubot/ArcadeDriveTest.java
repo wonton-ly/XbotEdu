@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import xbot.common.command.BaseCommand;
-import xbot.common.controls.sensors.MockJoystick;
+import xbot.common.controls.sensors.mock_adapters.MockJoystick;
 import xbot.edubot.operator_interface.OperatorInterface;
 import xbot.edubot.subsystems.drive.commands.ArcadeDriveWithJoysticksCommand;
 
@@ -16,7 +16,7 @@ public class ArcadeDriveTest extends BaseDriveTest {
 		OperatorInterface oi = this.injector.getInstance(OperatorInterface.class);
 		
 		BaseCommand command = injector.getInstance(ArcadeDriveWithJoysticksCommand.class);
-			
+		
 		MockJoystick left = (MockJoystick)oi.leftJoystick;
 		
 		command.initialize();

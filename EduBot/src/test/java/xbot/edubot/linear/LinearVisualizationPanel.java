@@ -13,9 +13,6 @@ import xbot.common.math.XYPair;
 public class LinearVisualizationPanel extends JPanel {
 	private int centerX;
     private int centerY;
-    private XYPair center;
-    private double baseMagnitude;
-    
     private String loops = "0";
     private double robotCurrentDistance = 0;
 
@@ -47,8 +44,7 @@ public class LinearVisualizationPanel extends JPanel {
 
         centerX = this.getWidth() / 4;
         centerY = this.getHeight() / 2;
-        center = new XYPair(centerX, centerY);
-        baseMagnitude = Math.min(centerX, centerY) * 0.8;
+        new XYPair(centerX, centerY);
         
         int linearFactor = 30;
         

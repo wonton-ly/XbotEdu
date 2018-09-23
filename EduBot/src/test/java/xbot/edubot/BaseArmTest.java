@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 
 import edu.wpi.first.wpilibj.MockDigitalInput;
-import xbot.common.controls.sensors.MockJoystick;
+import xbot.common.controls.sensors.mock_adapters.MockJoystick;
 import xbot.common.injection.BaseWPITest;
 import xbot.edubot.operator_interface.OperatorInterface;
 import xbot.edubot.subsystems.arm.ArmSubsystem;
@@ -36,11 +36,11 @@ public class BaseArmTest extends BaseWPITest {
 	}
 	
 	public void triggerUpperLimitSwitch(){
-		upperLimitSwitch.set_value(true);
+		upperLimitSwitch.setValue(true);
 	}
 	
 	public void triggerLowerLimitSwitch(){
-		lowerLimitSwitch.set_value(true);
+		lowerLimitSwitch.setValue(true);
 	}
 	
 	public void assertArmSpeed(double speed){

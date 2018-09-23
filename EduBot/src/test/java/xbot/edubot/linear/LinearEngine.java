@@ -1,7 +1,5 @@
 package xbot.edubot.linear;
 
-import com.google.inject.spi.DisableCircularProxiesOption;
-
 public class LinearEngine {
 
 	double velocity = 0;

@@ -8,14 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JSplitPane;
 
-import xbot.edubot.linear.DriveToPositionCommandTest.LinearEnvironmentState;
-import xbot.edubot.rotation.BaseOrientationEngineTest;
-import xbot.edubot.rotation.GoToOrientationTest;
-import xbot.edubot.rotation.RotationVisualizationPanel;
-import xbot.edubot.rotation.TurnLeft90DegreesCommandTest;
-import xbot.edubot.rotation.RotationTestVisualizer.OrientationTest;
-import xbot.edubot.rotation.RotationTestVisualizer.SelectableOrientationTest;
-
 public class LinearTestVisualizer {
 	
 	private JFrame frmLinearTestVisualizer;
