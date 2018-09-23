@@ -7,11 +7,11 @@ import xbot.common.command.BaseSubsystem;
 @Singleton
 public class ExampleSubsystem extends BaseSubsystem {
 
-	public ExampleSubsystem() {
-		log.info("I am created!");
-	}
-	
-	public void writeMessage(String message) {
-		log.info(message);
-	}
+    public ExampleSubsystem() {
+        log.info("I am created!");
+    }
+    
+    public void writeMessage(String message) {
+        log.info(message);
+    }
 }

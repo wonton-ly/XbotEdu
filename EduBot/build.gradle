@@ -63,7 +63,7 @@ task jarSources(type:Jar){
 
 checkstyle {
     toolVersion = '8.7'
-    configFile = file('./xbotcheckstyle.xml')
+    configFile = file('../SeriouslyCommonLib/xbotcheckstyle.xml')
 }
 
 task checkstyle(type: Checkstyle) {

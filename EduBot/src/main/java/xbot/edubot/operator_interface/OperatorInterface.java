@@ -39,17 +39,17 @@ public class OperatorInterface {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
-	
-	public XJoystick leftJoystick;
-	public XJoystick rightJoystick;
-	
-	@Inject
-	public OperatorInterface(CommonLibFactory factory, RobotAssertionManager assertionManager) {
-		leftJoystick = factory.createJoystick(1, 8);		
-		rightJoystick = factory.createJoystick(2, 8);
+    
+    public XJoystick leftJoystick;
+    public XJoystick rightJoystick;
+    
+    @Inject
+    public OperatorInterface(CommonLibFactory factory, RobotAssertionManager assertionManager) {
+        leftJoystick = factory.createJoystick(1, 8);
+        rightJoystick = factory.createJoystick(2, 8);
 
         leftJoystick.setYInversion(true);
-		rightJoystick.setXInversion(true);
-	}
+        rightJoystick.setXInversion(true);
+    }
 }
 

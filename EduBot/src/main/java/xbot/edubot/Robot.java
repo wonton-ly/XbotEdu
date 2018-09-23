@@ -13,10 +13,10 @@ import xbot.edubot.subsystems.DefaultCommandMap;
  * directory.
  */
 public class Robot extends BaseRobot {
-	@Override
-	protected void initializeSystems() {
-		super.initializeSystems();
-		this.injector.getInstance(DefaultCommandMap.class);
-		this.injector.getInstance(OperatorCommandMap.class);
+    @Override
+    protected void initializeSystems() {
+        super.initializeSystems();
+        this.injector.getInstance(DefaultCommandMap.class);
+        this.injector.getInstance(OperatorCommandMap.class);
     }
 }

@@ -7,21 +7,17 @@ import xbot.edubot.subsystems.drive.DriveSubsystem;
 
 public class ArcadeDriveWithJoysticksCommand extends BaseCommand {
 
-	@Inject
-	public ArcadeDriveWithJoysticksCommand(DriveSubsystem driveSubsystem) {
-		// TODO Auto-generated constructor stub
-	}
-	
-	@Override
-	public void initialize() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Inject
+    public ArcadeDriveWithJoysticksCommand(DriveSubsystem driveSubsystem) {
+    }
+    
+    @Override
+    public void initialize() {
+        
+    }
 
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void execute() {
+    }
 
 }
