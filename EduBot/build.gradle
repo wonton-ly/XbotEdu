@@ -9,7 +9,6 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'checkstyle'
 
 // In this section you declare where to find the dependencies of your project
@@ -48,14 +47,12 @@ dependencies {
     compile 'edu.wpi.first.wpiutil:wpiutil-java:3.+'
     compile 'edu.wpi.first.wpilibj:wpilibj-java:+'
     compile 'edu.wpi.first.ntcore:ntcore-java:+'
-        
-    /*compile files('lib/CTRE_Phoenix.jar')
-    compile files('lib/CTRE_Phoenix-sources.jar')*/
+
     compile 'a.b:CTRE_Phoenix:1.0'
-    //compile files('lib/ntcore-jni-4.0.0-all.jar')
-    //compile files('lib/wpilibj-jni-2018.1.1-all.jar')
     
     compile 'com.kauailabs.navx.frc:navx_frc:+'
+
+    compile project(':SeriouslyCommonLib')
 }
 
 
