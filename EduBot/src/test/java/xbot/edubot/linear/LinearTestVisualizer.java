@@ -9,17 +9,17 @@ import javax.swing.JSlider;
 import javax.swing.JSplitPane;
 
 public class LinearTestVisualizer {
-	
-	private JFrame frmLinearTestVisualizer;
-	private LinearVisualizationPanel vizPanel;
-	private JPanel controlPanel;
-	private JSlider speedSlider;
-	
+    
+    private JFrame frmLinearTestVisualizer;
+    private LinearVisualizationPanel vizPanel;
+    private JPanel controlPanel;
+    private JSlider speedSlider;
+    
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                	LinearTestVisualizer window = new LinearTestVisualizer();
+                    LinearTestVisualizer window = new LinearTestVisualizer();
                     window.frmLinearTestVisualizer.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -29,21 +29,21 @@ public class LinearTestVisualizer {
     }
     
     public LinearTestVisualizer() {
-    	initialize();
+        initialize();
     }
     
     private void initialize() {
-    	frmLinearTestVisualizer = new JFrame();
-    	
-    	frmLinearTestVisualizer.setTitle("Linear test visualizer");
-    	frmLinearTestVisualizer.setBounds(100, 100, 800, 400);
-    	frmLinearTestVisualizer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	frmLinearTestVisualizer.getContentPane().setLayout(new BoxLayout(frmLinearTestVisualizer.getContentPane(), BoxLayout.Y_AXIS));
+        frmLinearTestVisualizer = new JFrame();
         
-    	JSplitPane splitPane = new JSplitPane();
-    	frmLinearTestVisualizer.getContentPane().add(splitPane);
-    	
-    	vizPanel = new LinearVisualizationPanel(800, 500);
+        frmLinearTestVisualizer.setTitle("Linear test visualizer");
+        frmLinearTestVisualizer.setBounds(100, 100, 800, 400);
+        frmLinearTestVisualizer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frmLinearTestVisualizer.getContentPane().setLayout(new BoxLayout(frmLinearTestVisualizer.getContentPane(), BoxLayout.Y_AXIS));
+        
+        JSplitPane splitPane = new JSplitPane();
+        frmLinearTestVisualizer.getContentPane().add(splitPane);
+        
+        vizPanel = new LinearVisualizationPanel(800, 500);
         splitPane.setLeftComponent(vizPanel);
         
         controlPanel = new JPanel();
@@ -62,14 +62,14 @@ public class LinearTestVisualizer {
         testToRun.setUp();
         
         testToRun.setAsAsync((DriveToPositionCommandTest.LinearEnvironmentState envState) -> {
-        	vizPanel.updateViz(envState);
-        	vizPanel.repaint();
-        	
-        	if(envState.isFinished) {
-        		testToRun.stopTestEnv();
+            vizPanel.updateViz(envState);
+            vizPanel.repaint();
+            
+            if(envState.isFinished) {
+                testToRun.stopTestEnv();
             }
-        	
-        	testToRun.setAsyncPeriodMultiplier(10d / speedSlider.getValue());
+            
+            testToRun.setAsyncPeriodMultiplier(10d / speedSlider.getValue());
         });
         
         testToRun.vizRun();

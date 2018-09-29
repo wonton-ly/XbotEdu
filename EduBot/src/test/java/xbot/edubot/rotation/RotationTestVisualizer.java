@@ -102,6 +102,8 @@ public class RotationTestVisualizer {
             case ROTATE_TO_ORIENTATION:
                 currentTestEnvironment = new GoToOrientationTest();
                 break;
+            default:
+                break;
         }
         
         currentTestEnvironment.setUp();
