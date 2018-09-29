@@ -56,11 +56,14 @@ dependencies {
     //compile files('lib/wpilibj-jni-2018.1.1-all.jar')
     
     compile 'com.kauailabs.navx.frc:navx_frc:+'
+	
+	compile project(':SeriouslyCommonLib')
 }
 
 
 task jarSources(type:Jar){
-    from sourceSets.main.allSource
+    from 'src'
+    // something needs to be done here to point to our src directories, since they are nonstandard
     classifier = 'source'
 }
 
