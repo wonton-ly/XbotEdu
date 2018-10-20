@@ -133,7 +133,7 @@ task checkstyle(type: Checkstyle) {
     // Empty classpath
     classpath = files()
 }
-
+/*
 tasks.withType(Test) {
     testLogging.showStandardStreams = true
     
@@ -141,3 +141,4 @@ tasks.withType(Test) {
         logger.quiet "Executed test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
 }
+*/
