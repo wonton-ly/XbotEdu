@@ -13,6 +13,12 @@ import xbot.edubot.subsystems.DefaultCommandMap;
  * directory.
  */
 public class Robot extends BaseRobot {
+    
+    @Override
+    protected void setupInjectionModule() {
+        this.injectionModule = new EducationModule();
+    }
+
     @Override
     protected void initializeSystems() {
         super.initializeSystems();
