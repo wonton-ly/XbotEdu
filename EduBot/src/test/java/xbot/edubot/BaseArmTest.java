@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 
 import edu.wpi.first.wpilibj.MockDigitalInput;
+import xbot.common.controls.sensors.mock_adapters.MockFTCGamepad;
 import xbot.common.controls.sensors.mock_adapters.MockJoystick;
 import xbot.common.injection.BaseWPITest;
 import xbot.edubot.operator_interface.OperatorInterface;
@@ -15,8 +16,7 @@ public class BaseArmTest extends BaseWPITest {
     OperatorInterface oi;
     ArmSubsystem arms; 
     
-    MockJoystick left;
-    MockJoystick right;
+    MockFTCGamepad gamepad;
     
     MockDigitalInput upperLimitSwitch;
     MockDigitalInput lowerLimitSwitch;
@@ -28,8 +28,7 @@ public class BaseArmTest extends BaseWPITest {
         oi = this.injector.getInstance(OperatorInterface.class);
         arms = this.injector.getInstance(ArmSubsystem.class);
         
-        left = (MockJoystick)oi.leftJoystick;
-        right = (MockJoystick)oi.rightJoystick;
+        gamepad = (MockFTCGamepad)oi.gamepad;
         
         upperLimitSwitch = (MockDigitalInput)arms.upperLimitSwitch;
         lowerLimitSwitch = (MockDigitalInput)arms.lowerLimitSwitch;

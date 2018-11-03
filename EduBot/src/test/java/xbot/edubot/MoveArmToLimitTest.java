@@ -18,7 +18,7 @@ public class MoveArmToLimitTest extends BaseArmTest {
         assertArmSpeed(0, "Expect Motors initially 0");
         
         //Press button 0 and assert that the arm motors are running
-        left.pressButton(0);
+        gamepad.pressButton(0);
         command.execute();
         assertArmSpeed(1.0, "Expect Arm motors to move ");
         
@@ -39,7 +39,7 @@ public class MoveArmToLimitTest extends BaseArmTest {
         assertArmSpeed(0, "Expect Motors initially 0");
         
         //Press button 0 and assert that the arm motors are running in the opposite direction 
-        left.pressButton(1);
+        gamepad.pressButton(1);
         command.execute();
         assertArmSpeed(-1.0, "Expect Arm motors to move ");
         

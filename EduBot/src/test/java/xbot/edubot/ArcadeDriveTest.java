@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import xbot.common.command.BaseCommand;
+import xbot.common.controls.sensors.mock_adapters.MockFTCGamepad;
 import xbot.common.controls.sensors.mock_adapters.MockJoystick;
 import xbot.edubot.operator_interface.OperatorInterface;
 import xbot.edubot.subsystems.drive.commands.ArcadeDriveWithJoysticksCommand;
@@ -17,7 +18,7 @@ public class ArcadeDriveTest extends BaseDriveTest {
         
         BaseCommand command = injector.getInstance(ArcadeDriveWithJoysticksCommand.class);
         
-        MockJoystick left = (MockJoystick)oi.leftJoystick;
+        MockFTCGamepad left = (MockFTCGamepad)oi.gamepad;
         
         command.initialize();
         

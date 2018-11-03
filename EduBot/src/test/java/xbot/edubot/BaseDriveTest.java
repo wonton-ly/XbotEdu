@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 
+import xbot.common.controls.sensors.mock_adapters.MockFTCGamepad;
 import xbot.common.controls.sensors.mock_adapters.MockJoystick;
 import xbot.common.injection.BaseWPITest;
 import xbot.edubot.operator_interface.OperatorInterface;
@@ -14,8 +15,7 @@ public class BaseDriveTest extends BaseWPITest {
     protected DriveSubsystem drive;
     OperatorInterface oi;
     
-    MockJoystick left;
-    MockJoystick right;
+    MockFTCGamepad gamepad;
     
     @Before
     public void setUp() {
@@ -23,8 +23,7 @@ public class BaseDriveTest extends BaseWPITest {
         drive = this.injector.getInstance(DriveSubsystem.class);
         oi = this.injector.getInstance(OperatorInterface.class);
 
-        left = (MockJoystick)oi.leftJoystick;
-        right = (MockJoystick)oi.rightJoystick;
+        gamepad = (MockFTCGamepad)oi.gamepad;
     }
     
     public void assertDrive (double left, double right) {
