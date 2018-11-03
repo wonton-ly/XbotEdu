@@ -6,7 +6,6 @@ import org.junit.Before;
 
 import edu.wpi.first.wpilibj.MockDigitalInput;
 import xbot.common.controls.sensors.mock_adapters.MockFTCGamepad;
-import xbot.common.controls.sensors.mock_adapters.MockJoystick;
 import xbot.common.injection.BaseWPITest;
 import xbot.edubot.operator_interface.OperatorInterface;
 import xbot.edubot.subsystems.arm.ArmSubsystem;
@@ -43,11 +42,11 @@ public class BaseArmTest extends BaseWPITest {
     }
     
     public void assertArmSpeed(double speed){
-        assertEquals(speed, this.mockRobotIO.getPWM(5),0.001);
+        assertArmSpeed(speed, "");
     }
     
     public void assertArmSpeed (double speed, String message){
-        assertEquals(message, speed, this.mockRobotIO.getPWM(5),0.001);
+        assertEquals(message, speed, arms.armMotor.getMotorOutputPercent(), 0.001);
     }
 
 }

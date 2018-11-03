@@ -15,10 +15,10 @@ public class DriveSubsystem extends BaseSubsystem {
     public MockDistanceSensor distanceSensor;
     public MockHeadingSensor gyro;
     
-    XCANTalon frontLeft;
-    XCANTalon frontRight;
-    XCANTalon rearLeft;
-    XCANTalon rearRight;
+    public XCANTalon frontLeft;
+    public XCANTalon frontRight;
+    public XCANTalon rearLeft;
+    public XCANTalon rearRight;
         
     @Inject
     public DriveSubsystem(CommonLibFactory factory) {

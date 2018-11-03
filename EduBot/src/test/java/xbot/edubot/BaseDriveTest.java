@@ -1,11 +1,11 @@
 package xbot.edubot;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 
 import xbot.common.controls.sensors.mock_adapters.MockFTCGamepad;
-import xbot.common.controls.sensors.mock_adapters.MockJoystick;
 import xbot.common.injection.BaseWPITest;
 import xbot.edubot.operator_interface.OperatorInterface;
 import xbot.edubot.subsystems.drive.DriveSubsystem;
@@ -27,19 +27,25 @@ public class BaseDriveTest extends BaseWPITest {
     }
     
     public void assertDrive (double left, double right) {
-        assertEquals(left, this.mockRobotIO.getPWM(1), 0.001);
-        assertEquals(left, this.mockRobotIO.getPWM(3), 0.001);
-        
-        assertEquals(right, this.mockRobotIO.getPWM(2), 0.001);
-        assertEquals(right, this.mockRobotIO.getPWM(4), 0.001);
+        assertDrive(left, right, "");
     }
     
     public void assertDrive (double left, double right, String message) {
-        assertEquals(message, left, this.mockRobotIO.getPWM(1), 0.001);
-        assertEquals(message, left, this.mockRobotIO.getPWM(3), 0.001);
+        assertEquals(message, left, drive.frontLeft.getMotorOutputPercent(), 0.001);
+        assertEquals(message, left, drive.rearLeft.getMotorOutputPercent(), 0.001);
         
-        assertEquals(message, right, this.mockRobotIO.getPWM(2), 0.001);
-        assertEquals(message, right, this.mockRobotIO.getPWM(4), 0.001);
+        assertEquals(message, right, drive.frontRight.getMotorOutputPercent(), 0.001);
+        assertEquals(message, right, drive.rearRight.getMotorOutputPercent(), 0.001);
+    }
+
+    public void assertTurningLeft() {
+        // left < right
+        assertTrue(drive.frontLeft.getMotorOutputPercent() < drive.frontRight.getMotorOutputPercent());
+    }
+
+    public void assertTurningRight() {
+        // right < left
+        assertTrue(drive.frontLeft.getMotorOutputPercent() > drive.frontRight.getMotorOutputPercent());
     }
 
 }

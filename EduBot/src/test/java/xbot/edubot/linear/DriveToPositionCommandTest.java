@@ -160,7 +160,7 @@ public class DriveToPositionCommandTest extends BaseDriveTest {
     }
     
     double getForwardPower() {
-        return this.mockRobotIO.getPWM(1);
+        return drive.frontLeft.getMotorOutputPercent();
     }
 
 }

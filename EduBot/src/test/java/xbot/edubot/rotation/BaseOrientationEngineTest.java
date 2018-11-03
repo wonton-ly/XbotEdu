@@ -120,12 +120,12 @@ public class BaseOrientationEngineTest extends BaseDriveTest {
     private double getRotationPower() {
         // read from drive wheels, make a turning function
         // left pair
-        double l1 = this.mockRobotIO.getPWM(1);
-        double l2 = this.mockRobotIO.getPWM(3);
+        double l1 = drive.frontLeft.getMotorOutputPercent();
+        double l2 = drive.rearLeft.getMotorOutputPercent();
 
         // right pair
-        double r1 = this.mockRobotIO.getPWM(2);
-        double r2 = this.mockRobotIO.getPWM(4);
+        double r1 = drive.frontRight.getMotorOutputPercent();
+        double r2 = drive.rearRight.getMotorOutputPercent();
 
         // left turns are positive. So right power is positive, left power negative.
         return (r1 + r2 - l1 - l2) / 4;
