@@ -12,6 +12,7 @@ import xbot.common.math.XYPair;
 import xbot.edubot.rotation.BaseOrientationEngineTest.RotationEnvironmentState;
 
 public class RotationVisualizationPanel extends JPanel {
+    private static final long serialVersionUID = 2785468671430694763L;
     private int centerX;
     private int centerY;
     private XYPair center;
