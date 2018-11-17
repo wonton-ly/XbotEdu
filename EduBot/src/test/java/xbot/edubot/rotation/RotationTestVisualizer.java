@@ -20,7 +20,7 @@ public class RotationTestVisualizer {
     BaseOrientationEngineTest currentTestEnvironment;
     RotationEnvironmentState envState = new RotationEnvironmentState();
     private JPanel controlPanel;
-    private JComboBox testSelectionBox;
+    private JComboBox<OrientationTest> testSelectionBox;
     private JSlider speedSlider;
 
     /**
@@ -65,7 +65,7 @@ public class RotationTestVisualizer {
         controlPanel = new JPanel();
         splitPane.setRightComponent(controlPanel);
         
-        testSelectionBox = new JComboBox();
+        testSelectionBox = new JComboBox<OrientationTest>();
         testSelectionBox.addItemListener((e) -> {
             if(e.getStateChange() == ItemEvent.SELECTED) {
                 setOrientationTest((OrientationTest)e.getItem());
@@ -73,7 +73,7 @@ public class RotationTestVisualizer {
         });
         
         controlPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-        testSelectionBox.setModel(new DefaultComboBoxModel(OrientationTest.values()));
+        testSelectionBox.setModel(new DefaultComboBoxModel<OrientationTest>(OrientationTest.values()));
         testSelectionBox.setSelectedIndex(0);
         controlPanel.add(testSelectionBox);
         

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import xbot.common.math.XYPair;
 
 public class LinearVisualizationPanel extends JPanel {
+    private static final long serialVersionUID = 473984572055979398L;
     private int centerX;
     private int centerY;
     private String loops = "0";
