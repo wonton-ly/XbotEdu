@@ -100,9 +100,17 @@ checkstyle {
     configFile = file('../SeriouslyCommonLib/xbotcheckstyle.xml')
 }
 
+checkstyleMain{
+    logging.setLevel(LogLevel.WARN)
+}
+
+checkstyleTest{
+    logging.setLevel(LogLevel.WARN)
+}
+
 task checkstyle(type: Checkstyle) {
     source 'src/main/java'
-    configProperties.basedir = file('.')
+    configProperties.basedir = file('../SeriouslyCommonLib')
     
     // Empty classpath
     classpath = files()
