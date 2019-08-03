@@ -8,6 +8,7 @@ import xbot.edubot.subsystems.drive.DriveSubsystem;
 public class DriveToPositionCommand extends BaseCommand {
 
     DriveSubsystem drive;
+    public double targetPosition;
     
     @Inject
     public DriveToPositionCommand(DriveSubsystem driveSubsystem) {
@@ -17,6 +18,7 @@ public class DriveToPositionCommand extends BaseCommand {
     public void setTargetPosition(double position) {
         // This method will be called by the test, and will give you a goal distance.
         // You'll need to remember this target position and use it in your calculations.
+        targetPosition = position;
     }
     
     @Override
