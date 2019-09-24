@@ -103,7 +103,7 @@ public class DriveSubsystem extends BaseSubsystem {
             frontRight.simpleSet(0);
             rearRight.simpleSet(0);
         } */
-        double left = xValue + yValue;
+        /*double left = xValue + yValue;
         double right = (-1 * xValue) + yValue;
         if(){
             
@@ -113,7 +113,7 @@ public class DriveSubsystem extends BaseSubsystem {
             rearLeft.simpleSet(left);
             frontRight.simpleSet(right);
             rearRight.simpleSet(right);
-        }
+        }*/
     }
 
 
